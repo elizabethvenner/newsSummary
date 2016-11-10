@@ -1,0 +1,23 @@
+{
+  "name": "news-summary-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "server": "node_modules/http-server/bin/http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaszloBogacsi/newsSummary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaszloBogacsi/newsSummary/issues"
+  },
+  "homepage": "https://github.com/LaszloBogacsi/newsSummary#readme"
+}
