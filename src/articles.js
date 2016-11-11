@@ -1,6 +1,6 @@
 function Articles (){
   this.items = [];
-  this.webTitles = [];
+  this.webUrls = [];
 }
 
 Articles.prototype.getArticlesFromAPI = function () {
@@ -29,15 +29,16 @@ Articles.prototype._returnResult = function (httpRequest) {
 
 Articles.prototype.pushToItemsArray = function (response) {
   var headers = JSON.parse(response);
+  console.log(headers);
   this.items.push(headers);
 };
 
 
-Articles.prototype.getWebTitles = function () {
+Articles.prototype.getWebUrls = function () {
   for(var i = 0; i < 10; i++){
-  var webTitle = this.items[0].response.results[i].webTitle;
-    // console.log(webTitle);
-    this.webTitles.push(webTitle);
+  var webUrl = this.items[0].response.results[i].webUrl;
+    console.log(webUrl);
+    this.webUrls.push(webUrl);
   }
 };
 
