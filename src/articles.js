@@ -1,6 +1,6 @@
 function Articles (){
   this.items = [];
-  this.webUrls = [];
+  this.apiUrls = [];
 }
 
 Articles.prototype.getArticlesFromAPI = function () {
@@ -16,11 +16,10 @@ Articles.prototype.getArticlesFromAPI = function () {
   httpRequest.open('GET', 'https://content.guardianapis.com/search?api-key=f81f1495-6eed-4a8f-bb2c-19e085e510f2', true);
   httpRequest.send(null);
 };
-var response;
 
 Articles.prototype._returnResult = function (httpRequest) {
   if (httpRequest.status === 200) {
-    response = httpRequest.responseText;
+    var response = httpRequest.responseText;
     this.pushToItemsArray(response);
   } else {
     return httpRequest.status;
@@ -36,9 +35,9 @@ Articles.prototype.pushToItemsArray = function (response) {
 
 Articles.prototype.getWebUrls = function () {
   for(var i = 0; i < 10; i++){
-  var webUrl = this.items[0].response.results[i].webUrl;
-    console.log(webUrl);
-    this.webUrls.push(webUrl);
+  var apiUrl = this.items[0].response.results[i].apiUrl;
+    console.log(apiUrl);
+    this.apiUrls.push(apiUrl);
   }
 };
 
