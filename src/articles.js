@@ -1,5 +1,6 @@
 function Articles (){
   this.items = [];
+  this.webTitles = [];
 }
 
 Articles.prototype.getArticlesFromAPI = function () {
@@ -12,14 +13,14 @@ Articles.prototype.getArticlesFromAPI = function () {
       return httpRequest.readyState;
     }
   };
-  httpRequest.open('GET', 'http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/politics/blog/2014/feb/17/alex-salmond-speech-first-minister-scottish-independence-eu-currency-live?show-fields=body', true);
+  httpRequest.open('GET', 'https://content.guardianapis.com/search?api-key=f81f1495-6eed-4a8f-bb2c-19e085e510f2', true);
   httpRequest.send(null);
 };
+var response;
 
 Articles.prototype._returnResult = function (httpRequest) {
   if (httpRequest.status === 200) {
-    var response = httpRequest.responseText;
-    console.log(response);
+    response = httpRequest.responseText;
     this.pushToItemsArray(response);
   } else {
     return httpRequest.status;
@@ -27,8 +28,23 @@ Articles.prototype._returnResult = function (httpRequest) {
 };
 
 Articles.prototype.pushToItemsArray = function (response) {
-  this.items.push(response);
+  var headers = JSON.parse(response);
+  this.items.push(headers);
 };
 
+
+Articles.prototype.getWebTitles = function () {
+  for(var i = 0; i < 10; i++){
+  var webTitle = this.items[0].response.results[i].webTitle;
+    // console.log(webTitle);
+    this.webTitles.push(webTitle);
+  }
+};
+
+
+
+// Delete later
 var articles = new Articles();
 articles.getArticlesFromAPI();
+
+//
