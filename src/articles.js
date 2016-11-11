@@ -12,7 +12,7 @@ Articles.prototype.getArticlesFromAPI = function () {
       return httpRequest.readyState;
     }
   };
-  httpRequest.open('GET', 'https://content.guardianapis.com/search?api-key=f81f1495-6eed-4a8f-bb2c-19e085e510f2', true);
+  httpRequest.open('GET', 'http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/politics/blog/2014/feb/17/alex-salmond-speech-first-minister-scottish-independence-eu-currency-live?show-fields=body', true);
   httpRequest.send(null);
 };
 
